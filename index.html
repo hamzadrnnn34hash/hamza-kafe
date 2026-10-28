@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hamza Kafe</title>
+<style>
+body{font-family:sans-serif;max-width:600px;margin:0 auto;padding:16px;background:#faf7f2;color:#222}
+h1{text-align:center}
+h2{border-bottom:2px solid #c9a24d;padding-bottom:4px;margin-top:28px}
+.u{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #eee}
+.a{font-size:13px;color:#666}
+.f{font-weight:bold;white-space:nowrap}
+</style></head><body>
+<h1>Hamza Kafe</h1>
+<div id="menu">Menü hazırlanıyor...</div>
+<script>
+const LINK="BURAYA_LINK";
+fetch(LINK).then(r=>r.text()).then(t=>{
+ const s=t.trim().split("\n").slice(1).map(x=>x.trim().split(","));
+ let h="",k="";
+ s.forEach(([kat,ad,ac,fi])=>{
+  if(kat!==k){h+="<h2>"+kat+"</h2>";k=kat}
+  h+='<div class="u"><div><b>'+ad+'</b><div class="a">'+ac+'</div></div><div class="f">'+fi+' ₺</div></div>';
+ });
+ document.getElementById("menu").innerHTML=h;
+});
+</script></body></html>
